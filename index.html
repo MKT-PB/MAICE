@@ -115,8 +115,12 @@
   .ig-head{text-align:center;max-width:620px;margin:0 auto 44px}
   .ig-head h2{color:var(--ink)}
   .ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:36px}
-  .ig-embeds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;justify-items:center;align-items:start;margin-bottom:36px}
-  .ig-embeds .instagram-media{max-width:100%!important;min-width:0!important;width:100%!important;margin:0!important}
+  .ig-mini{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-bottom:34px}
+  .ig-sq{width:210px;height:210px;border-radius:16px;overflow:hidden;position:relative;display:block;background:var(--green);transition:transform .16s,box-shadow .2s}
+  .ig-sq:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(79,158,144,.22)}
+  .ig-sq img{width:100%;height:100%;object-fit:cover;display:block}
+  .ig-sq .igmk{position:absolute;top:10px;right:10px;width:26px;height:26px;color:#fff;opacity:.9}
+  @media(max-width:640px){.ig-sq{width:150px;height:150px}}
   .ig-tile{aspect-ratio:1/1;border-radius:16px;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;transition:transform .16s,background .2s}
   .ig-tile:hover{transform:scale(1.04);background:var(--green-2)}
   .ig-tile .ico{width:26px;height:26px;stroke-width:1.5;stroke:#fff}
@@ -269,14 +273,7 @@
       <h2 style="margin-top:14px">Seguinos en @maice_maternity</h2>
       <p style="color:var(--muted);margin-top:10px">Consejos, novedades y el día a día del centro.</p>
     </div>
-    <div class="ig-embeds">
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DdRfVGbBP2z/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DdEvu5AS7DV/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DdCE03DidcA/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Dc9jyS4CXoT/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Dc3xoWDBoLN/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DctTnSvllW5/" data-instgrm-version="14"></blockquote>
-    </div>
+    <div class="ig-mini" id="ig-mini"></div>
     <div class="ig-cta"><a class="btn btn-primary" href="https://instagram.com/maice_maternity" target="_blank" rel="noopener">Ver Instagram
       <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
   </div>
@@ -396,8 +393,20 @@
     `<div class="card"><div class="badge">${svg(e[0])}</div><h3>${e[1]}</h3><p>${e[2]}</p></div>`).join("");
   document.getElementById('staff-grid').innerHTML = staff.map(d=>
     `<div class="doc"><div class="avatar" style="background-image:url('${d[2]}')"></div><h4>${d[0]}</h4><p>${d[1]}</p></div>`).join("");
+  const igIcon2='<svg class="igmk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>';
+  const igPosts=[
+    {img:"assets/ig/epelboim.webp",url:"https://www.instagram.com/maice_maternity/reel/DdRfVGbBP2z/"},
+    {img:"assets/ig/correa.webp",url:"https://www.instagram.com/maice_maternity/reel/DcTsMwkBiRQ/"},
+    {img:"assets/ig/soares.webp",url:"https://www.instagram.com/maice_maternity/reel/DcwPFU5sco7/"},
+    {img:"assets/ig/hamer.webp",url:"https://www.instagram.com/maice_maternity/reel/Dax3udwhTJo/"},
+    {img:"assets/ig/dapra.webp",url:"https://www.instagram.com/maice_maternity/reel/Db_JTrkhNKp/"}
+  ];
+  const igWrap=document.getElementById('ig-mini');
+  igWrap.innerHTML = igPosts.length
+    ? igPosts.map(p=>`<a class="ig-sq" href="${p.url}" target="_blank" rel="noopener"><img src="${p.img}" alt="Post de MAICE en Instagram"></a>`).join("")
+    : Array.from({length:4}).map(()=>`<a class="ig-sq" href="https://instagram.com/maice_maternity" target="_blank" rel="noopener">${igIcon2}</a>`).join("");
+
   function loadVideo(){document.getElementById('videoBox').innerHTML='<iframe src="https://www.youtube.com/embed/4nSO9rHPg38?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';}
 </script>
-<script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
