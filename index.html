@@ -40,8 +40,8 @@
 
   /* NAV */
   header.nav{position:sticky;top:0;z-index:60;background:var(--green)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:78px}
-  .logo-img{height:42px;width:auto}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:90px}
+  .logo-img{height:58px;width:auto}
   nav.menu ul{display:flex;align-items:center;gap:4px;list-style:none}
   nav.menu a:not(.btn){font-family:var(--head);font-weight:500;font-size:.9rem;color:var(--on-green);padding:8px 14px;border-radius:100px;transition:background .2s}
   nav.menu a:not(.btn):hover{background:rgba(255,255,255,.16)}
@@ -100,10 +100,10 @@
   .card p{font-size:.92rem;color:var(--muted)}
 
   /* VIDEO */
-  #video{background:var(--green);color:var(--on-green)}
+  #video{background:var(--white);color:var(--ink)}
   .video-head{text-align:center;max-width:640px;margin:0 auto 44px}
-  .video-head h2{color:#fff}
-  .video-head .eyebrow{color:#fff;opacity:.85}
+  .video-head h2{color:var(--ink)}
+  .video-head .eyebrow{color:var(--green-deep)}
   .video-frame{position:relative;max-width:940px;margin:0 auto;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;background:#5aa99b;cursor:pointer;box-shadow:0 24px 60px rgba(47,53,54,.22)}
   .video-frame img.poster{width:100%;height:100%;object-fit:cover;opacity:.9}
   .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
@@ -115,6 +115,8 @@
   .ig-head{text-align:center;max-width:620px;margin:0 auto 44px}
   .ig-head h2{color:var(--ink)}
   .ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:36px}
+  .ig-embeds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;justify-items:center;align-items:start;margin-bottom:36px}
+  .ig-embeds .instagram-media{max-width:100%!important;min-width:0!important;width:100%!important;margin:0!important}
   .ig-tile{aspect-ratio:1/1;border-radius:16px;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;transition:transform .16s,background .2s}
   .ig-tile:hover{transform:scale(1.04);background:var(--green-2)}
   .ig-tile .ico{width:26px;height:26px;stroke-width:1.5;stroke:#fff}
@@ -136,7 +138,7 @@
   /* FOOTER */
   footer{background:var(--charcoal-2);color:var(--on-dark-muted);padding:60px 0 34px}
   .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px}
-  footer .logo-img{height:38px;margin-bottom:16px}
+  footer .logo-img{height:50px;margin-bottom:16px}
   footer p{font-size:.92rem;max-width:280px}
   footer h5{font-family:var(--head);color:#fff;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:15px}
   footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:.92rem}
@@ -157,7 +159,7 @@
     .foot-grid{grid-template-columns:1fr 1fr}
   }
   @media(max-width:640px){
-    nav.menu{display:none;position:absolute;top:78px;left:0;right:0;background:var(--green-2);padding:12px 26px 22px}
+    nav.menu{display:none;position:absolute;top:90px;left:0;right:0;background:var(--green-2);padding:12px 26px 22px}
     nav.menu.open{display:block}
     nav.menu ul{flex-direction:column;align-items:flex-start;gap:2px}
     nav.menu li.sep{display:none}
@@ -194,6 +196,16 @@
   </div>
 </header>
 
+<section id="video" class="pad">
+  <div class="wrap">
+    <div class="video-head"><span class="eyebrow">Conocenos</span><h2 style="margin-top:14px">MAICE en un minuto</h2></div>
+    <div class="video-frame" id="videoBox" onclick="loadVideo()">
+      <img class="poster" src="https://img.youtube.com/vi/4nSO9rHPg38/maxresdefault.jpg" alt="Video MAICE">
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+    </div>
+  </div>
+</section>
+
 <section class="hero" id="inicio">
   <span class="blob b1"></span><span class="blob b2"></span>
   <div class="wrap hero-in">
@@ -215,6 +227,17 @@
   </div>
 </section>
 
+<section id="staff" class="pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Nuestro equipo</span>
+      <h2>Profesionales que te acompañan</h2>
+      <p>El corazón de MAICE: un equipo de más de 20 especialistas que trabaja de forma integral, en cada etapa de tu salud.</p>
+    </div>
+    <div class="staff-grid" id="staff-grid"></div>
+  </div>
+</section>
+
 <section id="nosotros" class="pad">
   <div class="wrap">
     <span class="eyebrow">Nosotros</span>
@@ -225,17 +248,6 @@
       <div class="value"><div class="vtop"><svg class="ico" viewBox="0 0 24 24"><path d="M12 21s-6.5-4.35-9-8.5C1 9 3 5 6.5 5 9 5 12 8 12 8s3-3 5.5-3C21 5 23 9 21 12.5 18.5 16.65 12 21 12 21z"/></svg></div><h4>Cercanía</h4><p>Seguimiento personalizado y atención humana en cada consulta.</p></div>
       <div class="value"><div class="vtop"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3l2.3 4.7 5.2.8-3.75 3.65.9 5.15L12 15l-4.65 2.45.9-5.15L4.5 8.5l5.2-.8z"/></svg></div><h4>Experiencia</h4><p>Especialistas con trayectoria en embarazos de alto y bajo riesgo.</p></div>
     </div>
-  </div>
-</section>
-
-<section id="staff" class="pad">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Nuestro equipo</span>
-      <h2>Profesionales que te acompañan</h2>
-      <p>El corazón de MAICE: un equipo de más de 20 especialistas que trabaja de forma integral, en cada etapa de tu salud.</p>
-    </div>
-    <div class="staff-grid" id="staff-grid"></div>
   </div>
 </section>
 
@@ -250,16 +262,6 @@
   </div>
 </section>
 
-<section id="video" class="pad">
-  <div class="wrap">
-    <div class="video-head"><span class="eyebrow">Conocenos</span><h2 style="margin-top:14px">MAICE en un minuto</h2></div>
-    <div class="video-frame" id="videoBox" onclick="loadVideo()">
-      <img class="poster" src="https://img.youtube.com/vi/4nSO9rHPg38/maxresdefault.jpg" alt="Video MAICE">
-      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-    </div>
-  </div>
-</section>
-
 <section id="instagram" class="pad">
   <div class="wrap">
     <div class="ig-head">
@@ -267,7 +269,14 @@
       <h2 style="margin-top:14px">Seguinos en @maice_maternity</h2>
       <p style="color:var(--muted);margin-top:10px">Consejos, novedades y el día a día del centro.</p>
     </div>
-    <div class="ig-grid" id="ig-grid"></div>
+    <div class="ig-embeds">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DdRfVGbBP2z/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DdEvu5AS7DV/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DdCE03DidcA/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Dc9jyS4CXoT/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Dc3xoWDBoLN/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DctTnSvllW5/" data-instgrm-version="14"></blockquote>
+    </div>
     <div class="ig-cta"><a class="btn btn-primary" href="https://instagram.com/maice_maternity" target="_blank" rel="noopener">Ver Instagram
       <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
   </div>
@@ -356,8 +365,6 @@
     ["cross","Cirugía ginecológica","Procedimientos mínimamente invasivos con seguimiento personalizado."],
     ["heart","Cardiología","Cardio-obstetricia para pacientes con enfermedades cardíacas."],
     ["spark","Dermatología · Medicina estética","Cuidado de la piel y tratamientos estéticos especializados."],
-    ["spark","Cirugía plástica","Cirugía estética y reparadora."],
-    ["drop","Hematología","Hematología general, hemostasia, trombosis y oncohematología."],
     ["steth","Medicina clínica","Prevención, controles y tratamiento de patologías con enfoque integral."],
     ["baby","Puericultura","Acompañamiento en lactancia y crianza con puericultora certificada IBCLC."]
   ];
@@ -378,11 +385,10 @@
     ["Marisol Epelboim","Psicóloga Perinatal","assets/equipo/epelboim.webp"],
     ["María Eugenia Gonzalez","Psicóloga · Adolescentes y adultos","assets/equipo/gonzalez.webp"],
     ["Adriana Hamer","Nutricionista","assets/equipo/adrianahamer.webp"],
-    ["Daiana Portnoy","Nutricionista","assets/equipo/portnoy.webp"],
     ["Adan Nabel","Medicina Reproductiva","assets/equipo/nabel.webp"],
     ["Pamela Nicotra","Medicina Reproductiva","assets/equipo/nicotra.webp"],
     ["Camila Correa Sadouet","Cardióloga","assets/equipo/correa.webp"],
-    ["Daiana Komarovsky","Hematóloga","assets/equipo/komarovsky.webp"],
+    ["Gisela Castillo","Dermatóloga · Medicina Estética",CDN+"30/image_19_08_2025_22_18_15334.jpg"],
     ["Deborah Braver","Médica Clínica","assets/equipo/braver.webp"],
     ["Victoria Soares","Puericultora IBCLC","assets/equipo/soares.webp"]
   ];
@@ -390,10 +396,8 @@
     `<div class="card"><div class="badge">${svg(e[0])}</div><h3>${e[1]}</h3><p>${e[2]}</p></div>`).join("");
   document.getElementById('staff-grid').innerHTML = staff.map(d=>
     `<div class="doc"><div class="avatar" style="background-image:url('${d[2]}')"></div><h4>${d[0]}</h4><p>${d[1]}</p></div>`).join("");
-  const igIcon='<svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>';
-  document.getElementById('ig-grid').innerHTML = Array.from({length:6}).map(()=>
-    `<a class="ig-tile" href="https://instagram.com/maice_maternity" target="_blank" rel="noopener">${igIcon}</a>`).join("");
   function loadVideo(){document.getElementById('videoBox').innerHTML='<iframe src="https://www.youtube.com/embed/4nSO9rHPg38?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';}
 </script>
+<script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
