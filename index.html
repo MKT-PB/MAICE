@@ -363,35 +363,33 @@
   ];
   const CDN="https://maice.b-cdn.net/Content/UploadDirectory/Doctores/";
   const staff = [
-    ["Jorge Hamer","Ecografía Obstétrica","1/image_19_08_2025_21_31_30497.jpg"],
-    ["Ignacio Perez Tomasone","Ginecólogo Obstetra","12/image_19_08_2025_21_31_40560.jpg"],
-    ["Juan Pablo Sojo","Ginecólogo Obstetra","13/image_19_08_2025_21_32_08279.jpg"],
-    ["Luciana Pisarenco","Ginecóloga Obstetra","16/image_19_08_2025_21_31_5529.jpg"],
-    ["Fernando Da Pra","Ginecólogo Obstetra","14/image_19_08_2025_21_45_10985.jpg"],
-    ["María Inés Samper","Ginecóloga Obstetra","19/image_19_08_2025_21_45_26298.jpg"],
-    ["German Van Thillo","Ginec. Obstetra · Acupuntura","17/image_19_08_2025_21_55_4862.jpg"],
-    ["Sebastián Ares","Ginecólogo Obstetra","18/image_19_08_2025_21_56_01281.jpg"],
-    ["Gastón Senyk","Obstetra y Ginecólogo","35/image_26_04_2026_12_26_1511.jpg"],
-    ["Alejandro Polaino","Ginecólogo · Cirugía Ginecológica","20/image_19_08_2025_21_56_20172.jpg"],
-    ["María Celeste Sluga","Estética Ginecológica","11/image_19_08_2025_21_44_58547.jpg"],
-    ["Sofía Stajcer","Psicóloga Perinatal","15/image_19_08_2025_21_45_36548.jpg"],
-    ["Marisol Epelboim","Psicóloga Perinatal","24/image_19_08_2025_22_07_52613.jpg"],
-    ["María Eugenia Gonzalez","Psicóloga · Adolescentes y adultos","37/image_17_08_2026_12_32_18972.jpg"],
-    ["Adriana Hamer","Nutricionista","27/image_19_08_2025_22_07_12284.jpg"],
-    ["Daiana Portnoy","Nutricionista","32/image_19_08_2025_22_18_47507.jpg"],
-    ["Adan Nabel","Medicina Reproductiva","22/image_19_08_2025_21_56_32313.jpg"],
-    ["Pamela Nicotra","Medicina Reproductiva","28/image_19_08_2025_22_08_10301.jpg"],
-    ["Camila Correa Sadouet","Cardióloga","29/image_19_08_2025_22_18_04803.jpg"],
-    ["Gisela Castillo","Dermatóloga · Medicina Estética","30/image_19_08_2025_22_18_15334.jpg"],
-    ["Facundo Alvarado","Cirujano Plástico","31/image_19_08_2025_22_18_29335.jpg"],
-    ["Daiana Komarovsky","Hematóloga","33/image_15_09_2025_07_40_5016.jpg"],
-    ["Deborah Braver","Médica Clínica","34/image_17_09_2025_08_00_05165.jpg"],
-    ["Victoria Soares","Puericultora IBCLC","36/image_13_05_2026_21_06_24622.jpg"]
+    ["Jorge Hamer","Ecografía Obstétrica","assets/equipo/hamer.webp"],
+    ["Ignacio Perez Tomasone","Ginecólogo Obstetra","assets/equipo/tomasone.webp"],
+    ["Juan Pablo Sojo","Ginecólogo Obstetra","assets/equipo/sojo.webp"],
+    ["Luciana Pisarenco","Ginecóloga Obstetra","assets/equipo/pisarenco.webp"],
+    ["Fernando Da Pra","Ginecólogo Obstetra","assets/equipo/dapra.webp"],
+    ["María Inés Samper","Ginecóloga Obstetra","assets/equipo/samper.webp"],
+    ["German Van Thillo","Ginec. Obstetra · Acupuntura","assets/equipo/vanthillo.webp"],
+    ["Sebastián Ares","Ginecólogo Obstetra","assets/equipo/ares.webp"],
+    ["Gastón Senyk","Obstetra y Ginecólogo","assets/equipo/senyk.webp"],
+    ["Alejandro Polaino","Ginecólogo · Cirugía Ginecológica","assets/equipo/polaino.webp"],
+    ["María Celeste Sluga","Estética Ginecológica","assets/equipo/sluga.webp"],
+    ["Sofía Stajcer","Psicóloga Perinatal","assets/equipo/stajer.webp"],
+    ["Marisol Epelboim","Psicóloga Perinatal","assets/equipo/epelboim.webp"],
+    ["María Eugenia Gonzalez","Psicóloga · Adolescentes y adultos","assets/equipo/gonzalez.webp"],
+    ["Adriana Hamer","Nutricionista","assets/equipo/adrianahamer.webp"],
+    ["Daiana Portnoy","Nutricionista","assets/equipo/portnoy.webp"],
+    ["Adan Nabel","Medicina Reproductiva","assets/equipo/nabel.webp"],
+    ["Pamela Nicotra","Medicina Reproductiva","assets/equipo/nicotra.webp"],
+    ["Camila Correa Sadouet","Cardióloga","assets/equipo/correa.webp"],
+    ["Daiana Komarovsky","Hematóloga","assets/equipo/komarovsky.webp"],
+    ["Deborah Braver","Médica Clínica","assets/equipo/braver.webp"],
+    ["Victoria Soares","Puericultora IBCLC","assets/equipo/soares.webp"]
   ];
   document.getElementById('esp-cards').innerHTML = especialidades.map(e=>
     `<div class="card"><div class="badge">${svg(e[0])}</div><h3>${e[1]}</h3><p>${e[2]}</p></div>`).join("");
   document.getElementById('staff-grid').innerHTML = staff.map(d=>
-    `<div class="doc"><div class="avatar" style="background-image:url('${CDN}${d[2]}')"></div><h4>${d[0]}</h4><p>${d[1]}</p></div>`).join("");
+    `<div class="doc"><div class="avatar" style="background-image:url('${d[2]}')"></div><h4>${d[0]}</h4><p>${d[1]}</p></div>`).join("");
   const igIcon='<svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>';
   document.getElementById('ig-grid').innerHTML = Array.from({length:6}).map(()=>
     `<a class="ig-tile" href="https://instagram.com/maice_maternity" target="_blank" rel="noopener">${igIcon}</a>`).join("");
